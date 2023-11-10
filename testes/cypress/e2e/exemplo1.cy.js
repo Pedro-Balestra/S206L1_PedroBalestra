@@ -37,6 +37,15 @@ describe('Cenário de Teste: Testar funcionalidades de Login do site globalsqa (
     cy.get('h1.ng-binding').should('contain.text', userInfo[0]);
 
   });
+  it('Caso de Teste: Deletando um usuário com sucesso!', () => {
+    //Boa pratica: Nunca usar dados de testes anteriores.
+    var userInfo = createUserNinjaQa();
+    cy.login(userInfo[0], userInfo[1]);
+    cy.get('.ng-binding > a').click();
+    cy.get('.btn').click();
+    cy.login(userInfo[0], userInfo[1]);
+    cy.get('.ng-binding').should('have.text', 'Username or password is incorrect')
+  });
 
 
 });
